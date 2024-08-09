@@ -126,6 +126,7 @@ class CircleOfFiths extends Canvas {
 
       this.ctx.drawImage(this.img, 0, this.cy - 122, 250, 250);
 
+      this.ctx.fillStyle = "#444444";
       this.ctx.fillText("Visu", 10, this.cy + 150);
    }
 
@@ -256,6 +257,7 @@ resendButton.move(110, 400);
 
 max.bindInlet('setName', setName);
 function setName(name) {
+
    nameEdit.setText(name);
 }
 

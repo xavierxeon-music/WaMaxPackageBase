@@ -2,15 +2,49 @@ autowatch = 1;
 
 // inlets and outlets
 inlets = 1;
-setinletassist(0, "midinote");
+setinletassist(0, "midinote, message");
 
-outlets = 1;
+outlets = 3;
 setoutletassist(0, "midinote");
+setoutletassist(1, "visu");
+setoutletassist(2, "ui message");
+
+//////////////////////////////////////////
+
+var settings = {};
+
+function getvalueof() {
+   var text = JSON.stringify(settings);
+   return text;
+}
+
+function setvalueof(value) {
+   settings = JSON.parse(value);
+
+   scaleName = settings["name"];
+   if (!scaleName)
+      scaleName = "main";
+
+
+}
+
+//////////////////////////////////////////
 
 include("_scale.js");
 
 var scales = new Global("Scales");
 var scaleName = "main";
+
+function updateName(text) {
+
+   scaleName = text;
+   settings["name"] = text;
+}
+
+function bang() {
+
+   outlet(2, ["setName", scaleName]);
+}
 
 function name(text) {
 
